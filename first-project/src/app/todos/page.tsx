@@ -27,6 +27,7 @@ export default function Todos() {
         };
 
         const resp = await axios.post("/api/todos", data);
+        setTodos([])
         console.log(resp)
         // setTodos((prevTodos) => [
         //     ...prevTodos,
@@ -40,14 +41,14 @@ export default function Todos() {
         setTodos([]);
     }
 
-    async function deleteTodo(todo) {
+    async function deleteTodo(todo: any) {
         const id = todo.id
 
         const resp = await axios.delete(`/api/todos/${id}`)
         console.log(resp.data);
     }
 
-    async function editTodo(todo) {
+    async function editTodo(todo: any) {
         setEditMode(true)
         setEditTodoInfo({
             id: todo.id,
